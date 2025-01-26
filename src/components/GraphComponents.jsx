@@ -33,9 +33,13 @@ const GraphComponents = () => {
   
   useEffect(() => {
     apiService.apiWeekSales().then((result) => {
-      if (result.status === 200) {
-        setWeekSales(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setWeekSales(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -50,9 +54,13 @@ const GraphComponents = () => {
 
   useEffect(() => {
     apiService.apiMouthSales().then((result) => {
-      if (result.status === 200) {
-        setMouthSales(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setMouthSales(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -67,9 +75,13 @@ const GraphComponents = () => {
 
   useEffect(() => {
     apiService.apiWeekBalance().then((result) => {
-      if (result.status === 200) {
-        setWeekBalance(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setWeekBalance(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -84,9 +96,13 @@ const GraphComponents = () => {
 
   useEffect(() => {
     apiService.apiMouthBalance().then((result) => {
-      if (result.status === 200) {
-        setMouthBalance(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setMouthBalance(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")

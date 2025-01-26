@@ -36,26 +36,34 @@ const HomeComponents = ({updateErrG, updateLoginPage}) => {
   
   useEffect(() => {
     apiService.apiCardData().then((result) => {
-      if (result.status === 200) {
-        setCardDataLocal(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
-    }).catch((error)=>{
+    }).then((data) => {
+      setCardDataLocal(data)
+    }).catch((error) => {
       console.log("error", error)
       alert("Err")
       setCardDataLocal({
-        "title":"",
-        "chart_title":"",
-        "chart_labels":[],
-        "chart_data":[],
+      "title":"",
+      "chart_title":"",
+      "chart_labels":[],
+      "chart_data":[],
       })
     })
   }, [])
 
   useEffect(() => {
     apiService.apiWeekSales().then((result) => {
-      if (result.status === 200) {
-        setWeekSales(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setWeekSales(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -70,9 +78,13 @@ const HomeComponents = ({updateErrG, updateLoginPage}) => {
 
   useEffect(() => {
     apiService.apiMouthSales().then((result) => {
-      if (result.status === 200) {
-        setMouthSales(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setMouthSales(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -87,9 +99,13 @@ const HomeComponents = ({updateErrG, updateLoginPage}) => {
 
   useEffect(() => {
     apiService.apiWeekBalance().then((result) => {
-      if (result.status === 200) {
-        setWeekBalance(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setWeekBalance(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -104,9 +120,13 @@ const HomeComponents = ({updateErrG, updateLoginPage}) => {
 
   useEffect(() => {
     apiService.apiMouthBalance().then((result) => {
-      if (result.status === 200) {
-        setMouthBalance(result.data)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setMouthBalance(data)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")

@@ -38,10 +38,14 @@ const LayautComponent = () => {
 
   useEffect(() => {
     apiService.apiTableBalance().then((result) => {
-      if (result.status === 200) {
-        setTableDataBalance(result.data[0].data)
-        setTableBalanceColumns(result.data[1].cols)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setTableDataBalance(data[0].data)
+      setTableBalanceColumns(data[1].cols)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -50,10 +54,14 @@ const LayautComponent = () => {
 
   useEffect(() => {
     apiService.apiTablaEntradas().then((result) => {
-      if (result.status === 200) {
-        setTableDataEntradas(result.data[0].data)
-        setTableEntradasColumns(result.data[1].cols)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setTableDataEntradas(data[0].data)
+      setTableEntradasColumns(data[1].cols)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
@@ -62,10 +70,14 @@ const LayautComponent = () => {
   
   useEffect(() => { 
     apiService.apiTablaSalidas().then((result) => {
-      if (result.status === 200) {
-        setTableDataSalidas(result.data[0].data)
-        setTableSalidasColumns(result.data[1].cols)
+      if (result.ok) {
+      return result.json()
+      } else {
+      throw new Error('Network response was not ok.')
       }
+    }).then((data) => {
+      setTableDataSalidas(data[0].data)
+      setTableSalidasColumns(data[1].cols)
     }).catch((error)=>{
       console.log("error", error)
       alert("Err")
