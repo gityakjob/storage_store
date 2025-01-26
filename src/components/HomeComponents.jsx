@@ -139,9 +139,11 @@ const HomeComponents = ({updateErrG, updateLoginPage}) => {
   )
 }
 
-export default HomeComponents
-
 HomeComponents.propTypes = {
   updateErrG: PropTypes.any.isRequired,
   updateLoginPage: PropTypes.any.isRequired,
 }
+
+export default HomeComponents
+
+
